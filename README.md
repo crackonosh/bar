@@ -4,26 +4,38 @@
 Bar is an  [Übersicht](https://github.com/felixhageloh/uebersicht) widget
 that places a customizable bar on your desktop.
 
-![Spotify](./screenshots/1.png)
+This repository is a fork from [callahanrts' job](https://github.com/callahanrts/bar) updated to meet my needs.
+
+![Spotify](./screenshots/custom.png)
 
 ## Elements
 
+- Workspace {chunkwm needed} (TODO: make dynamic)
+- Focused window {chunkwm needed}
+
 - Currently playing music from
-  - Soundcloud
-- Battery
+  - Spotify
+  - Cmus (tends to crush when cmus is not started, will fix later)
+
+- Wi-Fi
+- Battery + un/plugged symbol 
 - Date/Time
 
 
 ## Installation
 
-Download (or clone) this repository and place the folder in your Übersicht widgets directory.
-
+1. Download (or clone) this repository and place the folder in your Übersicht widgets directory.
+2. Copy `script` folder to `~/scripts/uber/`
 
 ## Configuration
 
 Open [index.jsx](https://github.com/callahanrts/bar/blob/master/index.coffee)
 and edit as you'd like. Some of the objects toward the top should make
 customization a little easier.
+
+Elements itself are located in `elements` folder.
+
+Scripts located in `script` folder are loaded from custom `~/scripts/uber/` folder. Read files very carefully if you are trying to rebuild this thing. Debug console is your best friend. 
 
 ## Space configuration
 It's possible to get chunkwm to update when spaces are switched. You can
