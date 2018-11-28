@@ -15,7 +15,7 @@ This repository is a fork from [callahanrts' job](https://github.com/callahanrts
 
 - Currently playing music from
   - Spotify
-  - Cmus (tends to crush when cmus is not started, will fix later)
+  - Cmus
 
 - Wi-Fi
 - Battery + un/plugged symbol 
@@ -29,7 +29,7 @@ This repository is a fork from [callahanrts' job](https://github.com/callahanrts
 
 ## Configuration
 
-Open [index.jsx](https://github.com/callahanrts/bar/blob/master/index.coffee)
+Open [index.jsx](https://github.com/samurajhais/bar/blob/master/index.coffee)
 and edit as you'd like. Some of the objects toward the top should make
 customization a little easier.
 
@@ -52,5 +52,5 @@ cp bin/uberrefresh /usr/local/bin/uberrefresh
 
 ## Questions?
 
-If you find a bug or have any questions about Bar, [submit an issue](https://github.com/callahanrts/bar/issues/new).
+If you find a bug or have any questions about Bar, [submit an issue](https://github.com/samurajhais/bar/issues/new).
 
