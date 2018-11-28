@@ -34,3 +34,4 @@ const render = ({ config, output, error, data }) => {
 }
 
 export default render
+export const refreshFrequency = 1000 //ms

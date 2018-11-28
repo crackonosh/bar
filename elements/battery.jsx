@@ -1,9 +1,8 @@
 import { element } from '../lib/style.js';
 
-const render = ({ output, error, side, config, data }) => {
+const render = ({ output, error, side, config, data, charger}) => {
   var batColor = (level) => {
     var level = parseInt(level)
-
     if (level > 80)
       return "#97c475"; // Green
     else if (level > 55)
@@ -26,27 +25,44 @@ const render = ({ output, error, side, config, data }) => {
     padding: '0 0 0 10px',
     fontSize: '16px'
   }
+  var anotherStyle = {
+    padding: '10 10 10 10px',
+    fontSize: '15px'
+  }
+
+  var chargeIcon = (charger) => {
+    if (charger == "AC")
+      return "far fa-bolt"
+  }
+
+  var showIcon = (charger) => {
+    if (charger == "AC")
+      return anotherStyle
+  }
 
   var iconName = (level) => {
     var level = parseInt(level)
     if (level > 80)
-      return "battery-full"
+      return "far fa-battery-full"
     if (level > 60)
-      return "battery-three-quarters"
+      return "far fa-battery-three-quarters"
     if (level > 40)
-      return "battery-half"
+      return "far fa-battery-half"
     if (level > 20)
-      return "battery-quarter"
-    return "battery-empty"
+      return "far fa-battery-quarter"
+    return "far fa-battery-empty"
   }
 
   return error || data == 0 ? (
     <span style={style(0)}></span>
   ) : (
     <span style={style(data)}>
-      <span>{data}</span>
+      <span>
+        <i className={chargeIcon(charger)}></i>
+      </span>
+      <span style={iconStyle}>{data}</span>
       <span style={iconStyle}>
-        <i className={'far fa-' + iconName(data)}></i>
+        <i className={iconName(data)}></i>
       </span>
     </span>
   )
