@@ -10,7 +10,9 @@ This repository is a fork from [callahanrts' job](https://github.com/callahanrts
 
 ## Elements
 
-- Workspace {chunkwm needed} (TODO: make dynamic)
+- Workspace {chunkwm needed}
+  - highlights currently working workspace
+  - adds/removes workspaces dynamically 
 - Focused window {chunkwm needed}
 
 - Currently playing music from
@@ -18,7 +20,9 @@ This repository is a fork from [callahanrts' job](https://github.com/callahanrts
   - Cmus
 
 - Wi-Fi
-- Battery + un/plugged symbol 
+- Battery
+  - added icon when plugged
+  - changes color depending on percentage 
 - Date/Time
 
 

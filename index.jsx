@@ -26,6 +26,14 @@ const config = {
     style: {}
   },
   workspaces: {
+    icons: {
+      first: "fa fa-terminal",
+      second: "fab fa-opera",
+      third: "fas fa-code",
+      fourth: "fas fa-coffee",
+      fifth: "fas fa-eye",
+      sixth: "fas fa-dragon",
+    },
     style: {
       backgroundColor: theme.backgroundLight,
     }
@@ -69,7 +77,8 @@ const result = (data, key) => {
 }
 
 export const command = `
-WORKSPACE=$(echo $(/usr/local/bin/chunkc tiling::query -d id));
+FOCUSEDWORKSPACE=$(echo $(/usr/local/bin/chunkc tiling::query -d id));
+WORKSPACESCOUNT=$(echo $(/usr/local/bin/chunkc tiling::query -D 1 | tail -c 1));
 FOCUSEDAPP=$(echo $(/usr/local/bin/chunkc tiling::query --window tag));
 
 PLAYING=$(sh ~/scripts/uber/music.sh);
@@ -81,7 +90,10 @@ BAT=$(pmset -g batt | egrep '([0-9]+\%).*' -o --colour=auto | cut -f1 -d';');
 
 echo $(cat <<-EOF
   {
-    "workspace": "$WORKSPACE",
+    "workspace": {
+      "focused": "$FOCUSEDWORKSPACE",
+      "numOfWorksp": "$WORKSPACESCOUNT"
+    },
     "focusedApp": "$FOCUSEDAPP",
 
     "playing": "$PLAYING",

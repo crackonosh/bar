@@ -7,6 +7,30 @@ const render = ({ config, output, error, side, data }) => {
     float: side,
   }
 
+  // changes icon depending on ID
+  var getIcon = (position) => {
+    switch (position) {
+      case 1:
+        return config.icons.first;
+        break;
+      case 2:
+        return config.icons.second;
+        break;
+      case 3:
+        return config.icons.third;
+        break;
+      case 4:
+        return config.icons.fourth;
+        break;
+      case 5:
+        return config.icons.fifth;
+        break;
+      case 6:
+        return config.icons.sixth;
+        break;
+    }
+  }
+
   var spaceStyle = (position, space) => {
     var style = {
       height: "23px",
@@ -14,10 +38,12 @@ const render = ({ config, output, error, side, data }) => {
       padding: '0 8px'
     }
 
+    // highlights focused workspace
     if (position == parseInt(space)) {
       style.borderBottom = '4px solid #c678dd'
     }
 
+    // changes color of workspace icon depending on row
     switch (position) {
       case 1:
         style.color = "#0F0";
@@ -31,10 +57,25 @@ const render = ({ config, output, error, side, data }) => {
       case 4:
         style.color = "brown";
         break;
-
+      case 5:
+        style.color = "orange";
+        break;
+      case 6:
+        style.color = "blue";
+        break;
     }
 
     return style
+  }
+
+  // creates icon in workspace for every active workspace
+  var individualIcons = [];
+  for (var i = 1; i <= data.numOfWorksp; i++){
+    individualIcons.push(
+      <span style={spaceStyle(i, data.focused)}>
+        <i className={String(getIcon(i))}></i>
+      </span>
+    )
   }
 
   let errorContent = (
@@ -43,18 +84,7 @@ const render = ({ config, output, error, side, data }) => {
 
   let workspaces = (
     <span style={style}>
-      <span style={spaceStyle(1, data)}>
-        <i className="fa fa-terminal"></i>
-      </span>
-      <span style={spaceStyle(2, data)}>
-        <i className="fab fa-opera"></i>
-      </span>
-      <span style={spaceStyle(3, data)}>
-        <i className="fas fa-code"></i>
-      </span>
-      <span style={spaceStyle(4, data)}>
-        <i className="fas fa-coffee"></i>
-      </span>
+      {individualIcons}
     </span>
   )
 
@@ -62,7 +92,7 @@ const render = ({ config, output, error, side, data }) => {
     <span style={{...style, opacity: 0.4}}>ChunkWM not installed</span>
   )
 
-  return workspaces//error ? errorContent : data ? workspaces : noChunkwm
+  return error ? errorContent : data ? workspaces : noChunkwm
 }
 
 export default render
