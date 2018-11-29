@@ -68,7 +68,7 @@ const render = ({ config, output, error, side, data }) => {
     return style
   }
 
-  // creates icon in workspace for every active workspace
+  // creates icon in "workspaces" for every active workspace
   var individualIcons = [];
   for (var i = 1; i <= data.numOfWorksp; i++){
     individualIcons.push(

@@ -10,8 +10,7 @@ const render = ({ config, output, error, data }) => {
         textAlign: 'center',
         position: 'fixed',
         top: '0',
-        left: '0',
-        width: '100%'
+        left: '0'
       }
     } else {
       return { display: 'none' }

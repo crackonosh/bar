@@ -1,6 +1,7 @@
 import { element } from '../lib/style.js';
 
-const render = ({ output, error, side, config, data, charger}) => {
+const render = ({ output, error, side, config, data }) => {
+  // decides color of battery icon
   var batColor = (level) => {
     var level = parseInt(level)
     if (level > 80)
@@ -30,14 +31,10 @@ const render = ({ output, error, side, config, data, charger}) => {
     fontSize: '15px'
   }
 
+  // shows bolt icon when charging
   var chargeIcon = (charger) => {
     if (charger == "AC")
       return "far fa-bolt"
-  }
-
-  var showIcon = (charger) => {
-    if (charger == "AC")
-      return anotherStyle
   }
 
   var iconName = (level) => {
@@ -56,13 +53,13 @@ const render = ({ output, error, side, config, data, charger}) => {
   return error || data == 0 ? (
     <span style={style(0)}></span>
   ) : (
-    <span style={style(data)}>
+    <span style={style(data.bat)}>
       <span>
-        <i className={chargeIcon(charger)}></i>
+        <i className={chargeIcon(data.status)}></i>
       </span>
-      <span style={iconStyle}>{data}</span>
+      <span style={iconStyle}>{data.bat}</span>
       <span style={iconStyle}>
-        <i className={iconName(data)}></i>
+        <i className={iconName(data.bat)}></i>
       </span>
     </span>
   )

@@ -12,6 +12,7 @@ import {
   WifiStatus
 } from './elements/index.jsx'
 
+// config for components imported from above
 const config = {
   time: {
     format: "%I:%M %p",
@@ -99,8 +100,10 @@ echo $(cat <<-EOF
     "playing": "$PLAYING",
 
     "wifiStatus": "$WIFISTATUS",
-    "isCharging": "$ISCHARGING",
-    "battery": "$BAT"
+    "battery": {
+      "bat": "$BAT",
+      "status": "$ISCHARGING"
+    }
   }
 EOF
 );
@@ -125,7 +128,7 @@ export const render = ({ output, error }) => {
       <Playing config={config.playing} data={result(output, "playing")} />
 
       <Time config={config.time} side="right" />
-      <Battery config={config.battery} data={result(output, "battery")} charger={result(output, "isCharging")} side="right" />
+      <Battery config={config.battery} data={result(output, "battery")} side="right" />
       <WifiStatus config={config.wifiStatus} side="right" data={result(output, "wifiStatus")} />
     </div>
   )
