@@ -14,9 +14,11 @@ import {
 
 const config = {
   time: {
-    format: "%l:%M",
+    format: "%I:%M %p",
+    date: "%x %a",
     style: {
-      padding: '0 15px',
+      padding: '0 10px',
+      fontSize: '15px',
       backgroundColor: theme.backgroundLight,
     }
   },
@@ -37,20 +39,22 @@ const config = {
     style: {}
   },
   playing: {
-    style: {}
+    style: {
+      paddingTop: '10px'
+    }
   }
 }
 
 const barStyle = {
-  top: 0,
-  right: 0,
-  left: 0,
+  top: 10,
+  left: 10,
+  right: 10,
   position: 'fixed',
   background: theme.background,
   overflow: 'hidden',
   color: theme.text,
   height: '25px',
-  fontFamily: 'Helvetica',
+  fontFamily: 'FiraCode',
   fontSize: '.9rem',
   boxShadow: '0px 2px 5px 0 #000000',
 }
