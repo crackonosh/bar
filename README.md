@@ -37,7 +37,7 @@ Open [index.jsx](https://github.com/samurajhais/bar/blob/master/index.coffee)
 and edit as you'd like. Some of the objects toward the top should make
 customization a little easier.
 
-Elements itself are located in `elements` folder.
+Elements itself are located in `src` folder.
 
 Scripts located in `script` folder are loaded from custom `~/scripts/uber/` folder. Read files very carefully if you are trying to rebuild this thing. Debug console is your best friend. 
 

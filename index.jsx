@@ -10,7 +10,7 @@ import {
   Playing,
   FocusedApp,
   WifiStatus
-} from './elements/index.jsx'
+} from './src/index.jsx'
 
 // config for components imported from above
 const config = {
