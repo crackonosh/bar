@@ -10,9 +10,8 @@ const render = ({ config, output, error, side, data}) => {
   var checkFocus = (data) => {
     if (data == "?")
       return ""
-    return data
+    return data;
   }
-
 
   return error ? (
     <span style={style}>Error on focused app</span>
@@ -23,5 +22,4 @@ const render = ({ config, output, error, side, data}) => {
   )
 }
 
-export default render
-export const refreshFrequency = 1000 //ms
+export default render;

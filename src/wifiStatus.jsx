@@ -7,9 +7,6 @@ const render = ({ config, output, error, side, data}) => {
     float: side,
   }
 
-
-
-
   return error ? (
     <span style={style}>No net</span>
   ) : (

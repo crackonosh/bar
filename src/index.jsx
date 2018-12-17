@@ -1,4 +1,4 @@
-export {default as FocusedApp} from './focusedApp.jsx';
+export {default as FocusedApp } from './focusedApp.jsx';
 export {default as Battery } from './battery.jsx';
 export {default as Playing } from './playing.jsx';
 export {default as Time } from './time.jsx';

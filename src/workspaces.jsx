@@ -72,7 +72,7 @@ const render = ({ config, output, error, side, data }) => {
   var individualIcons = [];
   for (var i = 1; i <= data.numOfWorksp; i++){
     individualIcons.push(
-      <span style={spaceStyle(i, data.focused)}>
+      <span style={spaceStyle(i, data.focused)} key={i}>
         <i className={String(getIcon(i))}></i>
       </span>
     )

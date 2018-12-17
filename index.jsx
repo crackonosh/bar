@@ -1,6 +1,6 @@
 // Update every second for the clock. Expensive elements should
 // throttle themselves
-export const refreshFrequency = 1000 // ms
+export const refreshFrequency = 1000; // ms
 
 import { theme } from './lib/style.js';
 import {
@@ -68,7 +68,6 @@ const barStyle = {
   boxShadow: '0px 2px 5px 0 #000000',
 }
 
-
 const result = (data, key) => {
   try {
     return JSON.parse(data)[key]
@@ -80,7 +79,7 @@ const result = (data, key) => {
 export const command = `
 FOCUSEDWORKSPACE=$(echo $(/usr/local/bin/chunkc tiling::query -d id));
 WORKSPACESCOUNT=$(echo $(/usr/local/bin/chunkc tiling::query -D 1 | tail -c 1));
-FOCUSEDAPP=$(echo $(/usr/local/bin/chunkc tiling::query --window tag));
+FOCUSEDAPP=$(echo $(/usr/local/bin/chunkc tiling::query --window tag) | sed 's/"//g');
 
 PLAYING=$(sh ~/scripts/uber/music.sh);
 
