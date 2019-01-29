@@ -17,8 +17,10 @@ This repository is a fork from [callahanrts' job](https://github.com/callahanrts
 
 - Currently playing music from
   - Spotify
-  - Cmus
+  - Cmus {uses 'cmus-remote'}
 
+- Free memory
+- CPU usage
 - Wi-Fi
 - Battery
   - added icon when plugged
