@@ -14,11 +14,11 @@ const render = ({ config, output, error, side, theme }) => {
     <span style={style}>!</span>
   ) : (
     <span style={style}>
-      <span style={{paddingRight: '15px', fontSize: '13px'}}>
+      <span style={{paddingRight: '5px', fontSize: '12px'}}>
         {date}
       </span>
       {time}
-      <i className="far fa-clock" style={{padding: '0 0 0 10px'}}></i>
+      <i className="far fa-clock" style={{padding: '0 0 0 5px'}}></i>
     </span>
   )
 }

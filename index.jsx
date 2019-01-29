@@ -9,14 +9,16 @@ import {
   Workspaces,
   Playing,
   FocusedApp,
-  WifiStatus
+  WifiStatus,
+  CPU,
+  Mem,
 } from './src/index.jsx'
 
 // config for components imported from above
 const config = {
   time: {
     format: "%I:%M %p",
-    date: "%x %a",
+    date: "%b %d %a",
     style: {
       padding: '0 10px',
       fontSize: '15px',
@@ -29,7 +31,7 @@ const config = {
   workspaces: {
     icons: {
       first: "fa fa-terminal",
-      second: "fab fa-opera",
+      second: "fas fa-globe",
       third: "fas fa-code",
       fourth: "fas fa-coffee",
       fifth: "fas fa-eye",
@@ -41,15 +43,33 @@ const config = {
   },
   focusedApp: {
     style: {
-      width: "350px"
+      width: "250px",
+      fontSize: '12px',
     }
   },
   wifiStatus: {
-    style: {}
+    style: {
+      fontSize: '12px'
+    }
   },
   playing: {
     style: {
-      paddingTop: '10px'
+      paddingTop: '11px',
+      fontSize: '13px'
+    }
+  },
+  cpu: {
+    style: {
+      fontSize: '12px',
+      paddingTop: '1px',
+      color: '#0cf'
+    }
+  },
+  mem: {
+    style: {
+      fontSize: '12px',
+      paddingTop: '1px',
+      color: '#f55',
     }
   }
 }
@@ -65,7 +85,7 @@ const barStyle = {
   height: '25px',
   fontFamily: 'FiraCode',
   fontSize: '.9rem',
-  boxShadow: '0px 2px 5px 0 #000000',
+  boxShadow: '0px 2px 10px 0 #000000',
 }
 
 const result = (data, key) => {
@@ -83,6 +103,8 @@ FOCUSEDAPP=$(echo $(/usr/local/bin/chunkc tiling::query --window tag) | sed 's/"
 
 PLAYING=$(sh ~/scripts/uber/music.sh);
 
+MEM=$(echo $(top -l 1 | grep PhysMem: | awk '{print $6}'));
+CPU=$(echo $(iostat -Cd -c 2 | tail -c 3 | head -c 2));
 WIFISTATUS=$(sh ~/scripts/uber/wifiStatus.sh);
 ISCHARGING=$(pmset -g batt | grep -o "\'[A-Za-z]*" | sed "s/\'//g" | head -n 1);
 BAT=$(pmset -g batt | egrep '([0-9]+\%).*' -o --colour=auto | cut -f1 -d';');
@@ -98,6 +120,8 @@ echo $(cat <<-EOF
 
     "playing": "$PLAYING",
 
+    "mem": "$MEM",
+    "CPU": "$CPU",
     "wifiStatus": "$WIFISTATUS",
     "battery": {
       "bat": "$BAT",
@@ -129,6 +153,8 @@ export const render = ({ output, error }) => {
       <Time config={config.time} side="right" />
       <Battery config={config.battery} data={result(output, "battery")} side="right" />
       <WifiStatus config={config.wifiStatus} side="right" data={result(output, "wifiStatus")} />
+      <CPU config={config.cpu} side="right" data={result(output, "CPU")} />
+      <Mem config={config.mem} side="right" data={result(output, "mem")} />
     </div>
   )
   return error ? errorContent : content

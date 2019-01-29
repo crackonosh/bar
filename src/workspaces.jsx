@@ -33,14 +33,14 @@ const render = ({ config, output, error, side, data }) => {
 
   var spaceStyle = (position, space) => {
     var style = {
-      height: "23px",
+      height: "22px",
       display: 'inline-block',
-      padding: '0 8px'
+      padding: '0 5px'
     }
 
     // highlights focused workspace
     if (position == parseInt(space)) {
-      style.borderBottom = '4px solid #c678dd'
+      style.borderBottom = '4px solid #00c2ff'
     }
 
     // changes color of workspace icon depending on row

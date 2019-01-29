@@ -23,12 +23,11 @@ const render = ({ output, error, side, config, data }) => {
   }
 
   var iconStyle = {
-    padding: '0 0 0 10px',
-    fontSize: '16px'
+    padding: '0 0 0 5px',
+    fontSize: '13px'
   }
-  var anotherStyle = {
-    padding: '10 10 10 10px',
-    fontSize: '15px'
+  var textStyle = {
+    fontSize: '13px',
   }
 
   // shows bolt icon when charging
@@ -54,10 +53,10 @@ const render = ({ output, error, side, config, data }) => {
     <span style={style(0)}></span>
   ) : (
     <span style={style(data.bat)}>
-      <span>
+      <span style={{paddingRight: '5px', fontSize: '13px'}}>
         <i className={chargeIcon(data.status)}></i>
       </span>
-      <span style={iconStyle}>{data.bat}</span>
+      <span style={textStyle}>{data.bat}</span>
       <span style={iconStyle}>
         <i className={iconName(data.bat)}></i>
       </span>

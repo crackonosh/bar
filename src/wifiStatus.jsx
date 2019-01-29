@@ -8,10 +8,13 @@ const render = ({ config, output, error, side, data}) => {
   }
 
   return error ? (
-    <span style={style}>No net</span>
+    <span style={style}>No wifi</span>
   ) : (
     <span style={style}>
-    {data}
+      <span style={{paddingRight: '5px'}}>
+        {data} 
+      </span>
+      <i className={'fas fa-wifi'}></i>
     </span>
   )
 }

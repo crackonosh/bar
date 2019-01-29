@@ -1,4 +1,4 @@
-#!/usr/bash
+#!/bin/bash
 
 services=$(networksetup -listnetworkserviceorder | grep 'Hardware Port')
 
@@ -17,7 +17,7 @@ while read line; do
 done <<< "$(echo "$services")"
 
 if [ -n "$currentservice" ] ; then
-    echo "$currentservice – $(networksetup -getairportnetwork en0 | cut -c 24-)$(networksetup -getinfo "Apple USB Ethernet Adapter" | grep "IP address" | grep "\." | cut -c 13-)"
+    echo "$(networksetup -getairportnetwork en0 | cut -c 24-)"
 else
     >&1 echo "no net"
     exit 1

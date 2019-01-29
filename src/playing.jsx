@@ -18,8 +18,8 @@ const render = ({ config, output, error, data }) => {
   }
 
   var iconStyle = {
-    color: '#1fd662',
-    padding: '0 10px'
+    color: '#00dd00',
+    padding: '0 5px'
   }
 
   return error ? (
