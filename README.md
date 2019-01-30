@@ -20,7 +20,8 @@ This repository is a fork from [callahanrts' job](https://github.com/callahanrts
   - Cmus {uses 'cmus-remote'}
 
 - Free memory
-- CPU usage
+- CPU usage and temperature
+    - temperature depends on [osx-cpu-temp](https://github.com/lavoiesl/osx-cpu-temp)
 - Wi-Fi
 - Battery
   - added icon when plugged

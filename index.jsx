@@ -43,7 +43,7 @@ const config = {
   },
   focusedApp: {
     style: {
-      width: "250px",
+      width: "350px",
       fontSize: '12px',
     }
   },
@@ -86,6 +86,7 @@ const barStyle = {
   fontFamily: 'FiraCode',
   fontSize: '.9rem',
   boxShadow: '0px 2px 10px 0 #000000',
+  opacity: 0.9
 }
 
 const result = (data, key) => {
@@ -104,7 +105,8 @@ FOCUSEDAPP=$(echo $(/usr/local/bin/chunkc tiling::query --window tag) | sed 's/"
 PLAYING=$(sh ~/scripts/uber/music.sh);
 
 MEM=$(echo $(top -l 1 | grep PhysMem: | awk '{print $6}'));
-CPU=$(echo $(iostat -Cd -c 2 | tail -c 3 | head -c 2));
+CPUIDLE=$(echo $(iostat -Cd -c 2 | tail -c 3 | head -c 2));
+CPUTEMP=$(/usr/local/bin/osx-cpu-temp);
 WIFISTATUS=$(sh ~/scripts/uber/wifiStatus.sh);
 ISCHARGING=$(pmset -g batt | grep -o "\'[A-Za-z]*" | sed "s/\'//g" | head -n 1);
 BAT=$(pmset -g batt | egrep '([0-9]+\%).*' -o --colour=auto | cut -f1 -d';');
@@ -120,8 +122,11 @@ echo $(cat <<-EOF
 
     "playing": "$PLAYING",
 
-    "mem": "$MEM",
-    "CPU": "$CPU",
+    "memory": "$MEM",
+    "CPU": {
+      "idle": "$CPUIDLE",
+      "temp": "$CPUTEMP"
+    },
     "wifiStatus": "$WIFISTATUS",
     "battery": {
       "bat": "$BAT",
@@ -154,7 +159,7 @@ export const render = ({ output, error }) => {
       <Battery config={config.battery} data={result(output, "battery")} side="right" />
       <WifiStatus config={config.wifiStatus} side="right" data={result(output, "wifiStatus")} />
       <CPU config={config.cpu} side="right" data={result(output, "CPU")} />
-      <Mem config={config.mem} side="right" data={result(output, "mem")} />
+      <Mem config={config.mem} side="right" data={result(output, "memory")} />
     </div>
   )
   return error ? errorContent : content
