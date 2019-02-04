@@ -37,7 +37,7 @@ This repository is a fork from [callahanrts' job](https://github.com/callahanrts
 
 ## Configuration
 
-Open [index.jsx](https://github.com/samurajhais/bar/blob/master/index.coffee)
+Open [index.jsx](https://github.com/samurajhais/bar/blob/master/index.jsx)
 and edit as you'd like. Some of the objects toward the top should make
 customization a little easier.
 
