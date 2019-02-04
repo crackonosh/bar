@@ -19,6 +19,7 @@ This repository is a fork from [callahanrts' job](https://github.com/callahanrts
   - Spotify
   - Cmus {uses 'cmus-remote'}
 
+- Free disk space
 - Free memory
 - CPU usage and temperature
     - temperature depends on [osx-cpu-temp](https://github.com/lavoiesl/osx-cpu-temp)

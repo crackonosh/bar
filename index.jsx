@@ -12,6 +12,7 @@ import {
   WifiStatus,
   CPU,
   Mem,
+  HDD,  
 } from './src/index.jsx'
 
 // config for components imported from above
@@ -71,6 +72,13 @@ const config = {
       paddingTop: '1px',
       color: '#f55',
     }
+  },
+  hdd: {
+    style: {
+      fontSize: '12px',
+      paddingTop: '1px',
+      color: '#aaa'
+    }
   }
 }
 
@@ -104,6 +112,7 @@ FOCUSEDAPP=$(echo $(/usr/local/bin/chunkc tiling::query --window tag) | sed 's/"
 
 PLAYING=$(sh ~/scripts/uber/music.sh);
 
+HDD=$(echo $(diskutil info / | grep "Free Space" | awk \'{print $4 $5}\'));
 MEM=$(echo $(top -l 1 | grep PhysMem: | awk '{print $6}'));
 CPUIDLE=$(echo $(iostat -Cd -c 2 | tail -c 3 | head -c 2));
 CPUTEMP=$(/usr/local/bin/osx-cpu-temp);
@@ -122,6 +131,7 @@ echo $(cat <<-EOF
 
     "playing": "$PLAYING",
 
+    "HDD": "$HDD",
     "memory": "$MEM",
     "CPU": {
       "idle": "$CPUIDLE",
@@ -160,6 +170,7 @@ export const render = ({ output, error }) => {
       <WifiStatus config={config.wifiStatus} side="right" data={result(output, "wifiStatus")} />
       <CPU config={config.cpu} side="right" data={result(output, "CPU")} />
       <Mem config={config.mem} side="right" data={result(output, "memory")} />
+      <HDD config={config.hdd} side="right" data={result(output, "HDD")} />
     </div>
   )
   return error ? errorContent : content
