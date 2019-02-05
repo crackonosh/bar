@@ -114,7 +114,7 @@ PLAYING=$(sh ~/scripts/uber/music.sh);
 
 HDD=$(echo $(diskutil info / | grep "Free Space" | awk \'{print $4 $5}\'));
 MEM=$(echo $(top -l 1 | grep PhysMem: | awk '{print $6}'));
-CPUIDLE=$(echo $(iostat -Cd -c 2 | tail -c 3 | head -c 2));
+CPUIDLE=$(echo $(top -l 1 | grep "CPU usage" | awk '{print $7}' | sed 's/%//'));
 CPUTEMP=$(/usr/local/bin/osx-cpu-temp);
 WIFISTATUS=$(sh ~/scripts/uber/wifiStatus.sh);
 ISCHARGING=$(pmset -g batt | grep -o "\'[A-Za-z]*" | sed "s/\'//g" | head -n 1);
