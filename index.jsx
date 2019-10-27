@@ -106,9 +106,9 @@ const result = (data, key) => {
 }
 
 export const command = `
-FOCUSEDWORKSPACE=$(echo $(/usr/local/bin/chunkc tiling::query -d id));
-WORKSPACESCOUNT=$(echo $(/usr/local/bin/chunkc tiling::query -D 1 | tail -c 1));
-FOCUSEDAPP=$(echo $(/usr/local/bin/chunkc tiling::query --window tag) | sed 's/"//g');
+FOCUSEDWORKSPACE=$(echo $(/usr/local/bin/yabai -m query --spaces --space | grep index | grep -o '[0-9]'));
+WORKSPACESCOUNT=$(echo $(/usr/local/bin/yabai -m query --spaces | grep index | grep -o '[0-9],$') | awk '{print $NF}' | sed "s/,//");
+FOCUSEDAPP=$(echo $(/usr/local/bin/yabai -m query --windows --window | grep app | sed 's/"//g' | grep -o ':[A-Za-z0-9]*' | sed 's/://'));
 
 PLAYING=$(sh ~/scripts/uber/music.sh);
 
