@@ -108,7 +108,7 @@ const result = (data, key) => {
 export const command = `
 FOCUSEDWORKSPACE=$(echo $(/usr/local/bin/yabai -m query --spaces --space | grep index | grep -o '[0-9]'));
 WORKSPACESCOUNT=$(echo $(/usr/local/bin/yabai -m query --spaces | grep index | grep -o '[0-9],$') | awk '{print $NF}' | sed "s/,//");
-FOCUSEDAPP=$(echo $(/usr/local/bin/yabai -m query --windows --window | grep app | sed 's/"//g' | grep -o ':[A-Za-z0-9]*' | sed 's/://'));
+FOCUSEDAPP=$(echo $(/usr/local/bin/yabai -m query --windows --window 2>/dev/null | grep app | sed 's/"//g' | grep -o ':[A-Za-z0-9]*' | sed 's/://'));
 
 PLAYING=$(sh ~/scripts/uber/music.sh);
 

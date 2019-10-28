@@ -88,11 +88,11 @@ const render = ({ config, output, error, side, data }) => {
     </span>
   )
 
-  let noChunkwm = (
-    <span style={{...style, opacity: 0.4}}>ChunkWM not installed</span>
+  let noYabai = (
+    <span style={{...style, opacity: 0.4}}>Yabai not installed</span>
   )
 
-  return error ? errorContent : data ? workspaces : noChunkwm
+  return error ? errorContent : data ? workspaces : noYabai
 }
 
 export default render

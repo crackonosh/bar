@@ -7,17 +7,12 @@ const render = ({ config, output, error, side, data}) => {
     float: side,
   }
 
-  var checkFocus = (data) => {
-    if (data == "?")
-      return ""
-    return data;
-  }
 
   return error ? (
     <span style={style}>Error on focused app</span>
   ) : (
     <span style={style}>
-     {checkFocus(data)}
+      {data}
     </span>
   )
 }
