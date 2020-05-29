@@ -16,7 +16,7 @@ This repository is a fork from [callahanrts' job](https://github.com/callahanrts
 - Focused window {chunkwm needed}
 
 - Currently playing music from
-  - ~Spotify~ (currently not supported)
+  - Spotify
   - Cmus {uses 'cmus-remote'}
 
 - Free disk space

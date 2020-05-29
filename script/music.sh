@@ -11,10 +11,10 @@ case $cmusRunning in
       artist=$(/usr/local/bin/cmus-remote -Q | grep "tag artist" | sed s/"tag artist"/""/g)
       echo $artist - $song
     else
-      echo $(osascript -e 'tell application "System Events"set processList to (name of every process)end tellif (processList contains "Spotify") is true thentell application "Spotify"if player state is playing thenset artistName to artist of current trackset trackName to name of current trackreturn artistName & " - " & trackNameelsereturn ""end ifend tellend if')
+      echo $(osascript -e 'tell application "Spotify" to get (artist of current track as string) & " - " & (name of current track as string)')
     fi
     ;;
   *)
-    echo $(osascript -e 'tell application "System Events"set processList to (name of every process)end tellif (processList contains "Spotify") is true thentell application "Spotify"if player state is playing thenset artistName to artist of current trackset trackName to name of current trackreturn artistName & " - " & trackNameelsereturn ""end ifend tellend if')
+    echo $(osascript -e 'tell application "Spotify" to get (artist of current track as string) & " - " & (name of current track as string)')
     ;;
 esac
