@@ -1,3 +1,6 @@
+# DISCLAIMER
+I no longer use this, so it's possible it won't work anymore
+
 # Bar
 
 Bar is an  [Übersicht](https://github.com/felixhageloh/uebersicht) widget
